@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "../UI/Card/Card";
 
-const AvailablePlayers = ({ players, setCoin, coin }) => {
+const AvailablePlayers = ({ players, setCoin, coin, selectedPlayers, setSelecetdPlayers }) => {
   // console.log(players);
   return (
     <div>
@@ -10,7 +10,7 @@ const AvailablePlayers = ({ players, setCoin, coin }) => {
         {players.map((player) => {
           // console.log(player, "player");
           return (
-            <Card player={player} setCoin={setCoin} coin={coin}></Card>
+            <Card key={player.playerId} player={player} setCoin={setCoin} coin={coin} selectedPlayers={selectedPlayers} setSelecetdPlayers={setSelecetdPlayers}></Card>
           );
         })}
       </div>

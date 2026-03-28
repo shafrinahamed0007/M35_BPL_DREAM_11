@@ -7,20 +7,43 @@ const Players = ({ playersPromise, setCoin, coin }) => {
   const players = use(playersPromise);
   // console.log(players);
   const [selectButton, setSelectButton] = useState("available");
+  const [selectedPlayers, setSelecetdPlayers] = useState([]);
 
   // console.log(selectButton, "selectedButton");
   return (
     <div className="mt-[88px] container mx-auto my-[60px]">
       <div className="flex justify-between gap-4 items-center mb-5">
-        { selectButton === "available"? <h2 className="font-bold text-3xl">AVailable Players</h2>: <h2 className="font-bold text-3xl">Selected Players (2/6)</h2> }
+        {selectButton === "available" ? (
+          <h2 className="font-bold text-3xl">AVailable Players</h2>
+        ) : (
+          <h2 className="font-bold text-3xl">Selected Players (2/6)</h2>
+        )}
         <div>
-          <button onClick={()=> setSelectButton("available")} className={`btn ${selectButton === "available"? "bg-[#E7FE29]": "btn-neutral"} rounded-r-none rounded-l-xl`}>
+          <button
+            onClick={() => setSelectButton("available")}
+            className={`btn ${selectButton === "available" ? "bg-[#E7FE29]" : "btn-neutral"} rounded-r-none rounded-l-xl`}
+          >
             Available
           </button>
-          <button onClick={()=> setSelectButton("selected")} className={`btn ${selectButton === "selected" ? "bg-[#E7FE29]" : "btn-neutral"} rounded-l-none rounded-r-xl`}>Selected (0)</button>
+          <button
+            onClick={() => setSelectButton("selected")}
+            className={`btn ${selectButton === "selected" ? "bg-[#E7FE29]" : "btn-neutral"} rounded-l-none rounded-r-xl`}
+          >
+            Selected (0)
+          </button>
         </div>
       </div>
-     { selectButton === "available" ? <AvailablePlayers players={players} setCoin={setCoin} coin = {coin}></AvailablePlayers>: <SelectedPlayer></SelectedPlayer>}
+      {selectButton === "available" ? (
+        <AvailablePlayers
+          players={players}
+          setCoin={setCoin}
+          coin={coin}
+          setSelecetdPlayers={setSelecetdPlayers}
+          selectedPlayers={selectedPlayers}
+        ></AvailablePlayers>
+      ) : (
+        <SelectedPlayer selectedPlayers={selectedPlayers}></SelectedPlayer>
+      )}
     </div>
   );
 };
