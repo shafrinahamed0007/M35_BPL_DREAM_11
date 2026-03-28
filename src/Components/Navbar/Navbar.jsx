@@ -3,7 +3,7 @@ import currency from "../../assets/Currency.png"
 
 const Navbar = ({coin}) => {
   return (
-    <div className="mt-10 navbar bg-base-100 shadow-sm container mx-auto">
+    <div className="mt-10 navbar bg-base-100 shadow-sm container mx-auto w-11/12">
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
